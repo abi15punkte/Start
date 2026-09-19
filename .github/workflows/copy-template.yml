@@ -29,12 +29,12 @@ jobs:
         run: |
           rm -rf /tmp/lernwoerter-template
           mkdir -p /tmp/lernwoerter-template
-          rsync -a --delete --exclude '.git' source/ /tmp/lernwoerter-template/
+          rsync -a --delete --exclude '.git' --exclude '.github/workflows/deploy.yml' source/ /tmp/lernwoerter-template/
           rm -rf source
 
       - name: Replace Start with Lernwörter state
         run: |
-          rsync -a --delete --exclude '.git' /tmp/lernwoerter-template/ ./
+          rsync -a --delete --exclude '.git' --exclude '.github/workflows/deploy.yml' /tmp/lernwoerter-template/ ./
 
       - name: Commit exact template state
         run: |
